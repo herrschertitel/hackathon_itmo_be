@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "general_infos",
+  "info": {
+    "singularName": "general-info",
+    "pluralName": "general-infos",
+    "displayName": "GeneralInfo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isu": {
+      "type": "integer"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "education": {
+      "type": "text"
+    },
+    "positions": {
+      "type": "text"
+    },
+    "powers": {
+      "type": "text"
+    }
+  }
+}

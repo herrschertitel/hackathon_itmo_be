@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isu": {
+      "type": "integer"
+    },
+    "number_topic": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "subdivision": {
+      "type": "text"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "registration_card": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "customer": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

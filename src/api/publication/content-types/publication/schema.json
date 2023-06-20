@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publications",
+  "info": {
+    "singularName": "publication",
+    "pluralName": "publications",
+    "displayName": "Publication",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isu": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "output": {
+      "type": "text"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "index_to_db": {
+      "type": "string"
+    }
+  }
+}

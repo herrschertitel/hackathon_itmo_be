@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isu": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "timing": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}
