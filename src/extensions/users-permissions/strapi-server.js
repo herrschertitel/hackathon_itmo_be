@@ -183,6 +183,7 @@ module.exports = (plugin) => {
       return ctx.badRequest(error.toString())
     }
   }
+
   plugin.routes['content-api'].routes.push(
     {
       method: 'POST',

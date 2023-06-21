@@ -1,18 +1,18 @@
 'use strict';
 
 /**
- * general-info controller
+ * user-project controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::general-info.general-info', ({strapi}) => ({
-  async scoreCategory(ctx) {
+module.exports = createCoreController('api::user-project.user-project', ({ strapi }) => ({
+  async find(ctx) {
     if (!ctx.state.user || !ctx.state.user.id) {
       return ctx.request.status = 401;
     }
     try {
-      const data = await strapi.service('api::general-info.general-info').scoreCategory(ctx.state.user.id);
+      const data = await strapi.service('api::user-project.user-project').find(ctx.state.user.id);
       ctx.send({
         data
       })

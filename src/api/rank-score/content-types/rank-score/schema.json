@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rank_scores",
+  "info": {
+    "singularName": "rank-score",
+    "pluralName": "rank-scores",
+    "displayName": "RankScore"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rank": {
+      "type": "string"
+    },
+    "score": {
+      "type": "float"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "type_events",
+  "info": {
+    "singularName": "type-event",
+    "pluralName": "type-events",
+    "displayName": "TypeEvent",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.score"
+    }
+  }
+}

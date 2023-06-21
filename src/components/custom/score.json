@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_custom_scores",
+  "info": {
+    "displayName": "Score",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "BeHealthy": {
+      "type": "float"
+    },
+    "BeFit": {
+      "type": "float"
+    },
+    "BePro": {
+      "type": "float"
+    },
+    "BeFriendly": {
+      "type": "float"
+    },
+    "BeEco": {
+      "type": "float"
+    },
+    "BeOpen": {
+      "type": "float"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

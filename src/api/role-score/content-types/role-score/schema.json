@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "role_scores",
+  "info": {
+    "singularName": "role-score",
+    "pluralName": "role-scores",
+    "displayName": "RoleScore"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "score": {
+      "type": "float"
+    }
+  }
+}

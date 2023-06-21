@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "isu": {
-      "type": "integer"
-    },
     "type": {
       "type": "string"
     },

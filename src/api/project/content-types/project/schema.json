@@ -12,37 +12,31 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "isu": {
-      "type": "integer"
-    },
     "number_topic": {
       "type": "integer"
     },
     "type": {
       "type": "string"
     },
+    "name": {
+      "type": "string"
+    },
     "subdivision": {
       "type": "text"
     },
     "start_time": {
-      "type": "string"
+      "type": "integer"
     },
     "end_time": {
-      "type": "string"
+      "type": "integer"
     },
     "keywords": {
-      "type": "string"
+      "type": "text"
     },
     "registration_card": {
-      "type": "string"
-    },
-    "role": {
-      "type": "string"
+      "type": "text"
     },
     "customer": {
-      "type": "string"
-    },
-    "name": {
       "type": "string"
     }
   }

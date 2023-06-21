@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "events",
+  "collectionName": "user_projects",
   "info": {
-    "singularName": "event",
-    "pluralName": "events",
-    "displayName": "Event",
+    "singularName": "user-project",
+    "pluralName": "user-projects",
+    "displayName": "User_Project",
     "description": ""
   },
   "options": {
@@ -12,16 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "start_time": {
+    "isu": {
       "type": "integer"
     },
-    "end_time": {
+    "project": {
       "type": "integer"
     },
-    "type": {
+    "role": {
       "type": "string"
     }
   }

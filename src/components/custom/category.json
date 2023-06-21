@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_custom_categories",
+  "info": {
+    "displayName": "Category",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "BeHealthy": {
+      "type": "float",
+      "required": true
+    },
+    "BeFit": {
+      "type": "float",
+      "required": true
+    },
+    "BePro": {
+      "type": "float",
+      "required": true
+    },
+    "BeFriendly": {
+      "type": "float",
+      "required": true
+    },
+    "BeEco": {
+      "type": "float",
+      "required": true
+    },
+    "BeOpen": {
+      "type": "float",
+      "required": true
+    }
+  }
+}

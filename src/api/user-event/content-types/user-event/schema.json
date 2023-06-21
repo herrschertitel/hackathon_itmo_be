@@ -1,27 +1,26 @@
 {
   "kind": "collectionType",
-  "collectionName": "events",
+  "collectionName": "user_events",
   "info": {
-    "singularName": "event",
-    "pluralName": "events",
-    "displayName": "Event",
-    "description": ""
+    "singularName": "user-event",
+    "pluralName": "user-events",
+    "displayName": "User_Event"
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "isu": {
+      "type": "integer"
+    },
+    "event": {
+      "type": "integer"
+    },
+    "rank": {
       "type": "string"
     },
-    "start_time": {
-      "type": "integer"
-    },
-    "end_time": {
-      "type": "integer"
-    },
-    "type": {
+    "role": {
       "type": "string"
     }
   }

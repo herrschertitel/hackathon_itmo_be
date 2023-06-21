@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_publications",
+  "info": {
+    "singularName": "user-publication",
+    "pluralName": "user-publications",
+    "displayName": "User_Publication",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isu": {
+      "type": "integer"
+    },
+    "publication": {
+      "type": "integer"
+    }
+  }
+}

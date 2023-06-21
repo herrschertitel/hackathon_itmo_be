@@ -26,6 +26,12 @@
     },
     "powers": {
       "type": "text"
+    },
+    "scoreCategory": {
+      "type": "component",
+      "repeatable": false,
+      "component": "custom.category",
+      "required": true
     }
   }
 }
