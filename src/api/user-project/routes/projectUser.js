@@ -2,8 +2,8 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/user/score-category/:id",
-      handler: "general-info.scoreCategory",
+      path: "/user/projects/:id",
+      handler: "user-project.projectUser",
       config: {
         prefix: "",
         policies: []

@@ -20,10 +20,10 @@ module.exports = createCoreController('api::user-event.user-event', ({ strapi })
 
   async registeredEvents(ctx) {
     try {
-      if (!ctx.state.user || !ctx.state.user.id) {
-        return ctx.request.status = 401;
-      }
-      const data = await strapi.service('api::user-event.user-event').registeredEvents(ctx.state.user.id);
+      // if (!ctx.state.user || !ctx.state.user.id) {
+      //   return ctx.request.status = 401;
+      // }
+      const data = await strapi.service('api::user-event.user-event').registeredEvents(ctx.request.params.id);
       ctx.send({
         data
       })
@@ -34,10 +34,10 @@ module.exports = createCoreController('api::user-event.user-event', ({ strapi })
 
   async notRegisteredEvents(ctx) {
     try {
-      if (!ctx.state.user || !ctx.state.user.id) {
-        return ctx.request.status = 401;
-      }
-      const data = await strapi.service('api::user-event.user-event').notRegisteredEvents(ctx.state.user.id);
+      // if (!ctx.state.user || !ctx.state.user.id) {
+      //   return ctx.request.status = 401;
+      // }
+      const data = await strapi.service('api::user-event.user-event').notRegisteredEvents(ctx.request.params.id);
       ctx.send({
         data
       })
@@ -48,10 +48,10 @@ module.exports = createCoreController('api::user-event.user-event', ({ strapi })
 
   async filterEvent(ctx) {
     try {
-      if (!ctx.state.user || !ctx.state.user.id) {
-        return ctx.request.status = 401;
-      }
-      const data = await strapi.service('api::user-event.user-event').filterEvent(ctx.request.body.category, ctx.request.body.type, ctx.state.user.id);
+      // if (!ctx.state.user || !ctx.state.user.id) {
+      //   return ctx.request.status = 401;
+      // }
+      const data = await strapi.service('api::user-event.user-event').filterEvent(ctx.request.body.category, ctx.request.body.type, ctx.request.params.id);
       ctx.send({
         data
       })

@@ -7,7 +7,7 @@
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::user-publication.user-publication', ({ strapi }) => ({
-  async find(userId) {
+  async publicationUser(userId) {
     try {
       const user = await strapi.query('plugin::users-permissions.user').findOne({
         where: { id: userId },

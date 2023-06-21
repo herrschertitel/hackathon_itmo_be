@@ -7,12 +7,12 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::user-publication.user-publication', ({ strapi }) => ({
-  async find(ctx) {
-    if (!ctx.state.user || !ctx.state.user.id) {
-      return ctx.request.status = 401;
-    }
+  async publicationUser(ctx) {
+    // if (!ctx.state.user || !ctx.state.user.id) {
+    //   return ctx.request.status = 401;
+    // }
     try {
-      const data = await strapi.service('api::user-publication.user-publication').find(ctx.state.user.id);
+      const data = await strapi.service('api::user-publication.user-publication').publicationUser(ctx.request.params.id);
       ctx.send({
         data
       })
