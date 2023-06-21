@@ -4,7 +4,8 @@
   "info": {
     "singularName": "user-event",
     "pluralName": "user-events",
-    "displayName": "User_Event"
+    "displayName": "User_Event",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -16,9 +17,6 @@
     },
     "event": {
       "type": "integer"
-    },
-    "rank": {
-      "type": "string"
     },
     "role": {
       "type": "string"

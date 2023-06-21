@@ -32,11 +32,12 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
       const scoreRank = await strapi.entityService.findMany('api::rank-score.rank-score', {
         fields: ['rank', 'score'],
       });
+      user.scoreCategory.BeHealthy = 0, user.scoreCategory.BeFit = 0, user.scoreCategory.BePro = 0, user.scoreCategory.BeFriendly = 0, user.scoreCategory.BeEco = 0, user.scoreCategory.BeOpen = 0;
       for (let i = 0; i < events.length; i++) {
         const detailEvent = await strapi.entityService.findOne('api::event.event', events[i].event, {
-          fields: ['end_time', 'type']
+          fields: ['start_time', 'end_time', 'type', 'rank']
         });
-        if (detailEvent.end_time < 1687381200) {
+        if (detailEvent.start_time > 1655845200 && detailEvent.end_time < 1687381200) {
           let roleScore = 0, rankScore = 0;
           for (let j = 0; j < scoreRole.length; j++) {
             if (events[i].role === scoreRole[j].role) {
@@ -284,13 +285,13 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
     }
   },
 
-  async filterEvent(category, type, userId) {
+  async filterEvent(category, rank, userId) {
     try {
       if (typeof (category) === 'string') {
         category = category.split(" ")
       }
-      if (typeof (type) === 'string') {
-        type = type.split(" ")
+      if (typeof (rank) === 'string') {
+        rank = rank.split(" ")
       }
       let id = [];
       const user = await strapi.query('plugin::users-permissions.user').findOne({
@@ -306,7 +307,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         id.push(events[i].event)
       }
       const eventsHappended = await strapi.entityService.findMany('api::event.event', {
-        fields: ['name', 'start_time', 'end_time', 'type',],
+        fields: ['name', 'start_time', 'end_time', 'type', 'rank',],
         filters: {
           $and: [
             {
@@ -322,7 +323,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         }
       });
       const eventsRegistered = await strapi.entityService.findMany('api::event.event', {
-        fields: ['name', 'start_time', 'end_time', 'type',],
+        fields: ['name', 'start_time', 'end_time', 'type', 'rank'],
         filters: {
           $and: [
             {
@@ -338,7 +339,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         }
       });
       const eventsNotRegistered = await strapi.entityService.findMany('api::event.event', {
-        fields: ['name', 'start_time', 'end_time', 'type'],
+        fields: ['name', 'start_time', 'end_time', 'type', 'rank'],
         filters: {
           $and: [
             {
@@ -358,19 +359,23 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
           event: true,
         }
       });
+      const listRank = await strapi.entityService.findMany('api::rank-score.rank-score', {
+        fields: ['rank'],
+      });
       if (category === null || category === undefined) {
         category = ['BeHealthy', 'BeFit', 'BePro', 'BeFriendly', 'BeEco', 'BeOpen'];
       }
-      if (type === null || type === undefined) {
-        type = [];
-        for (let i = 0; i < scoreCategory.event.length; i++) {
-          type.push(scoreCategory.event[i].name);
+      if (rank === null || rank === undefined) {
+        rank = [];
+        for (let i = 0; i < listRank.length; i++) {
+          rank.push(listRank[i].rank);
         }
       }
       for (let i = 0; i < eventsHappended.length; i++) {
         eventsHappended[i].start_time = new Date(eventsHappended[i].start_time * 1000);
         eventsHappended[i].end_time = new Date(eventsHappended[i].end_time * 1000);
         for (let j = 0; j < scoreCategory.event.length; j++) {
+          eventsHappended[i].categoryEvent = [];
           let categoryEvent = [];
           if (eventsHappended[i].type === scoreCategory.event[j].name) {
             const categoryScore = scoreCategory.event[j];
@@ -401,6 +406,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         eventsRegistered[i].start_time = new Date(eventsRegistered[i].start_time * 1000);
         eventsRegistered[i].end_time = new Date(eventsRegistered[i].end_time * 1000);
         for (let j = 0; j < scoreCategory.event.length; j++) {
+          eventsRegistered[i].categoryEvent = [];
           let categoryEvent = [];
           if (eventsRegistered[i].type === scoreCategory.event[j].name) {
             const categoryScore = scoreCategory.event[j];
@@ -431,6 +437,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         eventsNotRegistered[i].start_time = new Date(eventsNotRegistered[i].start_time * 1000);
         eventsNotRegistered[i].end_time = new Date(eventsNotRegistered[i].end_time * 1000);
         for (let j = 0; j < scoreCategory.event.length; j++) {
+          eventsNotRegistered[i].categoryEvent = [];
           let categoryEvent = [];
           if (eventsNotRegistered[i].type === scoreCategory.event[j].name) {
             const categoryScore = scoreCategory.event[j];
@@ -459,7 +466,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
       }
       let eventsHappendedResult = [], eventsRegisteredResult = [], eventsNotRegisteredResult = [];
       for (let i = 0; i < eventsHappended.length; i++) {
-        if (type.includes(eventsHappended[i].type)) {
+        if (rank.includes(eventsHappended[i].rank)) {
           for (let j = 0; j < eventsHappended[i].categoryEvent.length; j++) {
             if (category.includes(eventsHappended[i].categoryEvent[j])) {
               eventsHappendedResult.push(eventsHappended[i]);
@@ -470,7 +477,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         }
       }
       for (let i = 0; i < eventsRegistered.length; i++) {
-        if (type.includes(eventsRegistered[i].type)) {
+        if (rank.includes(eventsRegistered[i].rank)) {
           for (let j = 0; j < eventsRegistered[i].categoryEvent.length; j++) {
             if (category.includes(eventsRegistered[i].categoryEvent[j])) {
               eventsRegisteredResult.push(eventsRegistered[i]);
@@ -481,7 +488,7 @@ module.exports = createCoreService('api::user-event.user-event', ({ strapi }) =>
         }
       }
       for (let i = 0; i < eventsNotRegistered.length; i++) {
-        if (type.includes(eventsNotRegistered[i].type)) {
+        if (rank.includes(eventsNotRegistered[i].rank)) {
           for (let j = 0; j < eventsNotRegistered[i].categoryEvent.length; j++) {
             if (category.includes(eventsNotRegistered[i].categoryEvent[j])) {
               eventsNotRegisteredResult.push(eventsNotRegistered[i]);

@@ -51,7 +51,7 @@ module.exports = createCoreController('api::user-event.user-event', ({ strapi })
       // if (!ctx.state.user || !ctx.state.user.id) {
       //   return ctx.request.status = 401;
       // }
-      const data = await strapi.service('api::user-event.user-event').filterEvent(ctx.request.body.category, ctx.request.body.type, ctx.request.params.id);
+      const data = await strapi.service('api::user-event.user-event').filterEvent(ctx.request.body.category, ctx.request.body.rank, ctx.request.params.id);
       ctx.send({
         data
       })
